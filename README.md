@@ -1,6 +1,25 @@
-## BT文件转磁力链接
+## BT文件转磁力链接 (采用web worker)
 
 使用Demo [index.ts](src/index.ts)
+
+```javascript
+import btdecode from '@xunlei/bt2magnet'
+
+const file = document.getElementById('file')
+file?.addEventListener('change', (evt: any) => {
+    let file = evt.target.files[0]
+    console.log(file)
+    const reader = new FileReader()
+    reader.readAsArrayBuffer(file)
+    reader.onload = async function (e: any) {
+        const result = await decode(e.target.result)
+        console.log(result)
+    }
+})
+
+```
+
+
 
 ## RollupJS + TypeScript + WebWorkers
 
